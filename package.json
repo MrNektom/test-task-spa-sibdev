@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 5050",
-    "test":"exit 0"
+    "test":"echo 'ok'"
   },
   "dependencies": {
     "axios": "^0.26.0",
