@@ -3,9 +3,8 @@ import { reactive, ref } from "@vue/reactivity";
 import { ElInput } from "element-plus";
 import axios from "axios";
 import router from "@/router";
+import users from "@/assets/users.json";
 
-const users = axios.get("/src/assets/users.json")
-console.log(users)
 
 const form = reactive({
   name:"",
@@ -13,16 +12,12 @@ const form = reactive({
 })
 
 const onSubmit = async (e) => {
-  console.log(users)
-  users.then((data)=>{
-    console.log(data)
-    if (data.data.find((el)=>el.login==form.name&&el.pass==form.pass)) {
-      localStorage.setItem("token","token")
-      router.push("/")
-    } else {
-      alert("Invalid login or password")
-    }
-  })
+  if (users.find((el)=>el.login==form.name&&el.pass==form.pass)) {
+    localStorage.setItem("token","token")
+    router.push("/")
+  } else {
+    alert("Invalid login or password")
+  }
 }
 
 </script>
